@@ -3,12 +3,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "LIBRARY_PATH=${PWD}/library next build",
     "typecheck": "tsc --noEmit",
     "vitest": "vitest run"
   },
   "dependencies": {
     "@civilisation/brand": "workspace:*",
+    "@civilisation/content": "workspace:*",
     "next": "16.2.0",
     "react": "19.2.0",
     "react-dom": "19.2.0"
