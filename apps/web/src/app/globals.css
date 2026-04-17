@@ -1,0 +1,12 @@
+/* apps/web/src/app/globals.css */
+@import "@civilisation/brand/styles.css";
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 0.18em;
+}
