@@ -1,36 +1,140 @@
-/* packages/brand/src/styles.css */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap");
+
 :root {
   --color-canvas: #f4f0e8;
   --color-paper: #ebe4d6;
   --color-ink: #161412;
   --color-muted-ink: #4b443d;
+  --color-faint-ink: #786d5d;
   --color-line: #b8aa96;
+  --color-rule: #cfc2aa;
   --color-accent: #6f5d43;
-  --layout-gutter: clamp(1.25rem, 2vw, 2rem);
+  --color-accent-ink: #3e2f1a;
+
+  --layout-gutter: clamp(1.25rem, 3vw, 2.5rem);
   --section-gap: clamp(3rem, 7vw, 6rem);
-  --measure-wide: 72rem;
+  --measure-wide: 76rem;
   --measure-reading: 42rem;
-  --font-display: "Fraunces", "Iowan Old Style", serif;
-  --font-body: "Source Serif 4", Georgia, serif;
-  --font-meta: "IBM Plex Sans", sans-serif;
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --font-meta: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --track-tight: -0.035em;
+  --track-meta: 0.16em;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
   background: var(--color-canvas);
   color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  font-variant-numeric: oldstyle-nums;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: var(--font-display);
+  font-weight: 450;
+  letter-spacing: var(--track-tight);
+  margin: 0;
+  color: var(--color-ink);
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+}
+
+/* --- Layout primitives --- */
+
+.cv-frame {
+  width: 100%;
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  padding-inline: var(--layout-gutter);
+}
+
+.cv-rule {
+  border: 0;
+  height: 1px;
+  background: var(--color-rule);
+  margin: 0;
+}
+
+.cv-rule-strong {
+  border: 0;
+  height: 1px;
+  background: var(--color-ink);
+  margin: 0;
+}
+
+.cv-rule-double {
+  border: 0;
+  height: 4px;
+  background-image:
+    linear-gradient(var(--color-ink), var(--color-ink)),
+    linear-gradient(var(--color-ink), var(--color-ink));
+  background-size: 100% 1px, 100% 1px;
+  background-position: top, bottom;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  margin: 0;
+}
+
+/* --- Typography helpers --- */
+
+.cv-meta {
+  font-family: var(--font-meta);
+  font-size: 0.72rem;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--color-muted-ink);
   font-weight: 500;
-  letter-spacing: -0.04em;
+}
+
+.cv-meta-ink {
+  color: var(--color-ink);
+}
+
+.cv-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: var(--track-tight);
+  line-height: 0.95;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+
+.cv-reading {
+  max-width: var(--measure-reading);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+
+.cv-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss02" on;
+  font-variant-numeric: tabular-nums;
 }
