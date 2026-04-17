@@ -1,14 +1,55 @@
-# README.md
+# Civilisation
 
-## Library of Civilisation
+A static-first public library project with an austere, archival, editorial, and minimalist visual direction.
 
-Library of Civilisation is a static-first public library project.
+## Project Structure
 
-This repository currently implements the launch foundation:
+```
+civilisation/
+├── apps/
+│   └── web/              # Next.js web application
+├── packages/
+│   └── brand/            # Shared brand components and styles
+└── docs/                 # Governance and policies
+```
 
-- governance baseline
-- canonical launch brand package in `packages/brand`
-- branded web shell in `apps/web`
+## Getting Started
 
-The visual direction is austere, archival, editorial, and minimalist.
-Later plans will add content records, ingestion, and reading surfaces.
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+```
+
+## Packages
+
+### @civilisation/brand
+Shared brand package containing canonical components and styling. Located in `packages/brand`.
+
+### @civilisation/web
+Next.js web application. Located in `apps/web`.
+
+## Tech Stack
+
+- **Framework**: Next.js
+- **Styling**: CSS Modules + Brand package
+- **Package Manager**: pnpm
+- **Language**: TypeScript
+
+## Development
+
+Run the web app:
+```bash
+pnpm dev
+```
+
+The app will be available at `http://localhost:3000`.
+
+## License
+
+TBD
