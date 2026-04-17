@@ -1,0 +1,36 @@
+/* packages/brand/src/styles.css */
+:root {
+  --color-canvas: #f4f0e8;
+  --color-paper: #ebe4d6;
+  --color-ink: #161412;
+  --color-muted-ink: #4b443d;
+  --color-line: #b8aa96;
+  --color-accent: #6f5d43;
+  --layout-gutter: clamp(1.25rem, 2vw, 2rem);
+  --section-gap: clamp(3rem, 7vw, 6rem);
+  --measure-wide: 72rem;
+  --measure-reading: 42rem;
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-meta: "IBM Plex Sans", sans-serif;
+}
+
+html {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}

@@ -3,10 +3,10 @@
   "private": true,
   "packageManager": "pnpm@10.0.0",
   "scripts": {
-    "build": "tsc -p tsconfig.base.json --noEmit",
-    "dev": "vitest",
-    "test": "vitest",
-    "typecheck": "tsc -p tsconfig.base.json --noEmit"
+    "build": "pnpm --filter @civilisation/web build",
+    "dev": "pnpm --filter @civilisation/web dev",
+    "test": "vitest run",
+    "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {
     "typescript": "^5.8.3",
