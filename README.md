@@ -1,5 +1,7 @@
 # Civilisation
 
+A charitable project curated by **NHLAA** and supported technologically by **NH Group**.
+
 A static-first public library project with an austere, archival, editorial, and minimalist visual direction.
 
 ## Project Structure
