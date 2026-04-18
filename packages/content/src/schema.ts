@@ -46,3 +46,26 @@ export const collectionSchema = z.object({
 });
 
 export type Collection = z.infer<typeof collectionSchema>;
+
+export const roomEntrySchema = z.object({
+  year: z.string(),
+  author: z.string(),
+  title: z.string(),
+  native: z.string().optional(),
+  language: z.string(),
+  discipline: z.string(),
+  slug: z.string().optional(),
+});
+
+export type RoomEntry = z.infer<typeof roomEntrySchema>;
+
+export const roomSchema = z.object({
+  id: z.string(),
+  label: z.string(),
+  span: z.string(),
+  note: z.string(),
+  order: z.number().int().nonnegative(),
+  entries: z.array(roomEntrySchema).min(1),
+});
+
+export type Room = z.infer<typeof roomSchema>;
