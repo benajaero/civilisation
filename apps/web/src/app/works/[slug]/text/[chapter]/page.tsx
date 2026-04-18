@@ -8,7 +8,8 @@ import {
   workHasText,
 } from "@civilisation/content";
 import { SiteFrame } from "../../../../../components/site-frame";
-import { ChapterNav } from "../../../../../components/chapter-nav";
+import { ReadingProgress } from "../../../../../components/reading-progress";
+import { ClientChapterNav } from "../../../../../components/client-chapter-nav";
 
 export const dynamic = "force-static";
 
@@ -45,6 +46,7 @@ export default async function ReaderPage({
 
   return (
     <main>
+      <ReadingProgress />
       <SiteFrame>
         <section className="reader">
           <p className="reader__meta">
@@ -58,7 +60,7 @@ export default async function ReaderPage({
               {loaded.body}
             </ReactMarkdown>
           </div>
-          <ChapterNav
+          <ClientChapterNav
             workSlug={slug}
             workTitle={work.title}
             prev={prev ? { chapterSlug: prev.chapterSlug, title: prev.title } : undefined}
