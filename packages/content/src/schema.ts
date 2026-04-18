@@ -33,6 +33,8 @@ export const authorSchema = z.object({
   civilisations: z.array(z.string()),
   languages: z.array(z.string()),
   dates: z.record(z.string()).optional(),
+  portrait: z.string().optional(),
+  description: z.string().optional(),
 });
 
 export type Author = z.infer<typeof authorSchema>;
@@ -43,6 +45,7 @@ export const collectionSchema = z.object({
   description: z.string().optional(),
   countries: z.array(z.string()),
   civilisations: z.array(z.string()),
+  image: z.string().optional(),
 });
 
 export type Collection = z.infer<typeof collectionSchema>;

@@ -16,10 +16,12 @@ export { resolveLinks } from "./resolve-links";
 export {
   createCtextAdapter,
   createGutenbergAdapter,
+  createPoetryInTranslationAdapter,
   sourceAdapters,
   type CtextSourceInput,
   type GutenbergSourceInput,
   type NormalizedSource,
+  type PoetryInTranslationSourceInput,
   type SourceKind,
   type SourceRightsAssessment,
   type SourceRightsStatus,

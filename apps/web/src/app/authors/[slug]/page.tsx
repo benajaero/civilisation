@@ -24,14 +24,34 @@ export default async function AuthorPage({
       <SiteFrame>
         <article className="author">
           <header className="author__header">
-            <p className="author__kicker cv-meta">
-              {author.countries.join(", ")} · {author.civilisations.join(", ")}
-            </p>
-            <h1 className="author__name">{author.name}</h1>
-            {author.dates?.floruit && (
-              <p className="author__dates">Floruit: {author.dates.floruit}</p>
-            )}
+            <div className="author__intro">
+              {author.portrait && (
+                <figure className="author__portrait">
+                  <img
+                    src={author.portrait}
+                    alt={`Portrait of ${author.name}`}
+                    className="author__portrait-image"
+                  />
+                </figure>
+              )}
+              <div className="author__meta">
+                <p className="author__kicker cv-meta">
+                  {author.countries.join(", ")} · {author.civilisations.join(", ")}
+                </p>
+                <h1 className="author__name">{author.name}</h1>
+                {author.dates?.floruit && (
+                  <p className="author__dates">Floruit: {author.dates.floruit}</p>
+                )}
+              </div>
+            </div>
           </header>
+
+          {author.description && (
+            <section className="author__section">
+              <h2 className="author__section-title">About</h2>
+              <p className="author__description">{author.description}</p>
+            </section>
+          )}
 
           <section className="author__section">
             <h2 className="author__section-title">Languages</h2>

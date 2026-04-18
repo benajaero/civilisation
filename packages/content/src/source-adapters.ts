@@ -1,4 +1,4 @@
-export type SourceKind = "gutenberg" | "ctext";
+export type SourceKind = "gutenberg" | "ctext" | "poetryintranslation";
 
 export type SourceRightsStatus =
   | "review_required"
@@ -38,11 +38,18 @@ export interface CtextSourceInput {
   includesTranslation: boolean;
 }
 
+export interface PoetryInTranslationSourceInput {
+  path: string;
+  title: string;
+  author: string;
+}
+
 const RIGHTS_CHECKED_AT = "2026-04-18";
 
 const gutenbergTermsUrl = "https://www.gutenberg.org/policy/license";
 const gutenbergRobotUrl = "https://www.gutenberg.org/policy/robot_access.html";
 const ctextApiTermsUrl = "https://ctext.org/tools/api";
+const poetryInTranslationTermsUrl = "https://www.poetryintranslation.com/";
 
 function encodeParams(params: Record<string, string>): string {
   return new URLSearchParams(params).toString();
@@ -141,9 +148,39 @@ export function createCtextAdapter() {
   };
 }
 
+export function createPoetryInTranslationAdapter() {
+  return {
+    kind: "poetryintranslation" as const,
+    createSource(input: PoetryInTranslationSourceInput): NormalizedSource {
+      const url = `https://www.poetryintranslation.com/${input.path}`;
+      const conditions = [
+        "Non-commercial reuse is freely permitted with attribution.",
+        "All texts are human-authored or translated; verify each work's specific copyright terms.",
+        "Contact the publisher for any commercial applications.",
+      ];
+
+      return {
+        kind: "poetryintranslation",
+        sourceId: input.path,
+        title: input.title,
+        canonicalUrl: url,
+        retrievalUrl: url,
+        rights: {
+          status: "review_required",
+          basis: "Poetry in Translation permits non-commercial reuse with attribution. Ideal for non-profit digital libraries.",
+          sourceTermsUrl: poetryInTranslationTermsUrl,
+          checkedAt: RIGHTS_CHECKED_AT,
+          conditions,
+        },
+      };
+    },
+  };
+}
+
 export const sourceAdapters = {
   gutenberg: createGutenbergAdapter(),
   ctext: createCtextAdapter(),
+  poetryintranslation: createPoetryInTranslationAdapter(),
 } as const;
 
 export { gutenbergRobotUrl };

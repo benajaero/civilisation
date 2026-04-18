@@ -257,6 +257,29 @@ code {
   padding-bottom: 1.5rem;
 }
 
+.author__intro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.author__portrait {
+  flex-shrink: 0;
+}
+
+.author__portrait-image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--color-line);
+}
+
+.author__meta {
+  flex: 1;
+  min-width: 200px;
+}
+
 .author__kicker {
   margin-bottom: 0.5rem;
 }
@@ -274,6 +297,11 @@ code {
   margin-top: 1rem;
   color: var(--color-muted-ink);
   font-style: italic;
+}
+
+.author__description {
+  color: var(--color-ink);
+  line-height: 1.7;
 }
 
 .author__section {
