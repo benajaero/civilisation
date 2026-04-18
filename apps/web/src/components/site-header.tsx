@@ -27,13 +27,11 @@ export function SiteHeader() {
         <hr className="cv-rule-double" />
         <nav className="site-nav" aria-label="Primary">
           <ul className="site-nav__list">
+            <li><a href="/#lobby">Rooms</a></li>
             <li><a href="/catalog">Catalog</a></li>
             <li><a href="/search">Search</a></li>
-            <li><a href="#index">Archive</a></li>
-            <li><a href="#index">Texts</a></li>
-            <li><a href="#epochs">Epochs</a></li>
-            <li><a href="#manifesto">Manifesto</a></li>
-            <li><a href="#colophon">About</a></li>
+            <li><a href="/#manifesto">Manifesto</a></li>
+            <li><a href="/#principles">Principles</a></li>
           </ul>
         </nav>
       </SiteFrame>
