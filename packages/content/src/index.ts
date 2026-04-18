@@ -11,7 +11,7 @@ export {
   type ChapterFrontmatter,
 } from "./load-chapters";
 export { buildCatalog, type CatalogEntry } from "./build-catalog";
-export { buildSearchIndex } from "./build-search-index";
+export { buildSearchIndex, type SearchIndexEntry } from "./build-search-index";
 export { resolveLinks } from "./resolve-links";
 export {
   createCtextAdapter,
