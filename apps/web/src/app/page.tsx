@@ -101,7 +101,7 @@ export default async function HomePage() {
                 ambition is scale. The discipline is provenance.
               </p>
               <p className="manifesto__sign">
-                &mdash; The Editors, Ninth Heaven Library
+                &mdash; The Editors, Ninth Heaven Literature & Arts Association (NHLAA)
               </p>
             </div>
           </div>

@@ -22,7 +22,10 @@ export function RoomIndex({ room, availableSlugs }: RoomIndexProps) {
         );
 
         return (
-          <li key={`${room.id}-${i}`} className="entry">
+          <li
+            key={`${room.id}-${i}`}
+            className={available ? "entry entry--available" : "entry entry--unavailable"}
+          >
             <span className="entry__year cv-mono">{entry.year}</span>
             <span className="entry__author">{entry.author}</span>
             <span className="entry__title">
@@ -34,6 +37,9 @@ export function RoomIndex({ room, availableSlugs }: RoomIndexProps) {
                 titleNode
               )}
             </span>
+            {!available ? (
+              <span className="entry__status cv-meta">Unavailable</span>
+            ) : null}
             <span className="entry__discipline cv-meta">{entry.discipline}</span>
             <span className="entry__origin cv-meta cv-mono">{entry.language}</span>
           </li>

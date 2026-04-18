@@ -36,6 +36,9 @@ export default async function RoomPage({
       }),
   );
 
+  const availableCount = availableSlugs.size;
+  const unavailableCount = room.entries.length - availableCount;
+
   return (
     <main>
       <SiteFrame>
@@ -43,6 +46,26 @@ export default async function RoomPage({
           <p className="room__crumbs">
             <a href="/">Lobby</a> &nbsp;·&nbsp; {room.label}
           </p>
+          <header className="room__header">
+            <div>
+              <p className="cv-meta">Room {room.order + 1}</p>
+              <h1 className="room__title">{room.label}</h1>
+            </div>
+            <dl className="room__stats" aria-label="Room accession status">
+              <div>
+                <dt>Total</dt>
+                <dd>{room.entries.length}</dd>
+              </div>
+              <div>
+                <dt>Readable</dt>
+                <dd>{availableCount}</dd>
+              </div>
+              <div>
+                <dt>Unavailable</dt>
+                <dd>{unavailableCount}</dd>
+              </div>
+            </dl>
+          </header>
           <RoomFloorPlan room={room} availableSlugs={availableSlugs} />
           <RoomIndex room={room} availableSlugs={availableSlugs} />
         </section>

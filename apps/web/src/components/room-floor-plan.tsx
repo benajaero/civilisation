@@ -24,12 +24,15 @@ export function RoomFloorPlan({ room, availableSlugs }: RoomFloorPlanProps) {
                 className={
                   available
                     ? "floor-plan__cell floor-plan__cell--available"
-                    : "floor-plan__cell"
+                    : "floor-plan__cell floor-plan__cell--unavailable"
                 }
               >
                 <span className="floor-plan__author">{entry.author}</span>
                 <span className="floor-plan__rule" aria-hidden="true">&mdash;</span>
                 <span className="floor-plan__title">{entry.title}</span>
+                {!available ? (
+                  <span className="floor-plan__status cv-meta">Unavailable</span>
+                ) : null}
               </div>
             );
           })}

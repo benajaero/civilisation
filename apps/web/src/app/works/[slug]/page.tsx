@@ -1,8 +1,5 @@
 import { loadWork, loadChapters, workHasText } from "@civilisation/content";
-
-const PageFrame = ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-auto w-full max-w-[72rem] px-[var(--layout-gutter)]">{children}</div>
-);
+import { SiteFrame } from "../../../components/site-frame";
 
 export const dynamic = "force-static";
 
@@ -23,33 +20,39 @@ export default async function WorkPage({
 
   return (
     <main>
-      <PageFrame>
-        <article className="py-12">
-          <header className="mb-8">
-            <p className="font-[var(--font-meta)] uppercase tracking-[0.08em] text-[0.8rem] text-[var(--color-muted-ink)] mb-2">
+      <SiteFrame>
+        <article className="work">
+          <header className="work__header">
+            <p className="work__kicker cv-meta">
               {work.countries.join(", ")} · {work.civilisations.join(", ")}
             </p>
-            <h1 className="text-[clamp(2rem,4vw,3.5rem)] leading-[1.1]">{work.title}</h1>
-            <p className="mt-4 text-[var(--color-muted-ink)]">
-              Available in: {work.available_languages.join(", ")}
-            </p>
+            <h1 className="work__title">{work.title}</h1>
+            <div className="work__status-row">
+              <p className="work__availability">
+                Available in: {work.available_languages.join(", ")}
+              </p>
+              {hasText && firstChapter ? (
+                <a
+                  href={`/works/${slug}/text/${firstChapter.chapterSlug}`}
+                  className="work__begin"
+                >
+                  Begin reading &rarr;
+                </a>
+              ) : (
+                <span className="work__unavailable">Text not yet accessioned.</span>
+              )}
+            </div>
           </header>
 
           {hasText && firstChapter ? (
-            <section className="border-t border-[var(--color-line)] pt-8 mt-8">
-              <a
-                href={`/works/${slug}/text/${firstChapter.chapterSlug}`}
-                className="inline-block font-[var(--font-meta)] text-[0.78rem] uppercase tracking-[0.18em] border-b border-[var(--color-ink)] pb-1"
-              >
-                Begin reading &rarr;
-              </a>
-              <h2 className="text-lg font-medium mt-8 mb-4">Text</h2>
-              <ol className="space-y-2 list-decimal pl-6">
+            <section className="work__section work__section--text">
+              <h2 className="work__section-title">Text</h2>
+              <ol className="work__chapter-list">
                 {chapters.map((ch) => (
                   <li key={ch.chapterSlug}>
                     <a
                       href={`/works/${slug}/text/${ch.chapterSlug}`}
-                      className="text-[var(--color-accent)]"
+                      className="work__chapter-link"
                     >
                       {ch.title}
                     </a>
@@ -58,17 +61,20 @@ export default async function WorkPage({
               </ol>
             </section>
           ) : (
-            <p className="mt-8 italic text-[var(--color-muted-ink)]">
-              Text not yet accessioned.
-            </p>
+            <section className="work__section work__section--text">
+              <h2 className="work__section-title">Text</h2>
+              <p className="work__empty">
+                Catalogued only. The text is waiting for review and accession.
+              </p>
+            </section>
           )}
 
-          <section className="border-t border-[var(--color-line)] pt-8 mt-8">
-            <h2 className="text-lg font-medium mb-4">Related Works</h2>
-            <ul className="space-y-2">
+          <section className="work__section">
+            <h2 className="work__section-title">Related Works</h2>
+            <ul className="work__list">
               {work.links.related_works.map((id) => (
                 <li key={id}>
-                  <a href={`/works/${id.replace("work.", "")}`} className="text-[var(--color-accent)]">
+                  <a href={`/works/${id.replace("work.", "")}`} className="work__link">
                     {id}
                   </a>
                 </li>
@@ -76,12 +82,12 @@ export default async function WorkPage({
             </ul>
           </section>
 
-          <section className="border-t border-[var(--color-line)] pt-8 mt-8">
-            <h2 className="text-lg font-medium mb-4">Collections</h2>
-            <ul className="space-y-2">
+          <section className="work__section">
+            <h2 className="work__section-title">Collections</h2>
+            <ul className="work__list">
               {work.links.collections.map((id) => (
                 <li key={id}>
-                  <a href={`/collections/${id.replace("collection.", "")}`} className="text-[var(--color-accent)]">
+                  <a href={`/collections/${id.replace("collection.", "")}`} className="work__link">
                     {id}
                   </a>
                 </li>
@@ -89,7 +95,7 @@ export default async function WorkPage({
             </ul>
           </section>
         </article>
-      </PageFrame>
+      </SiteFrame>
     </main>
   );
 }

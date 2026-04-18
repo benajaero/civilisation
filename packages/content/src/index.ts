@@ -13,3 +13,14 @@ export {
 export { buildCatalog } from "./build-catalog";
 export { buildSearchIndex } from "./build-search-index";
 export { resolveLinks } from "./resolve-links";
+export {
+  createCtextAdapter,
+  createGutenbergAdapter,
+  sourceAdapters,
+  type CtextSourceInput,
+  type GutenbergSourceInput,
+  type NormalizedSource,
+  type SourceKind,
+  type SourceRightsAssessment,
+  type SourceRightsStatus,
+} from "./source-adapters";
