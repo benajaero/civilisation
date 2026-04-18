@@ -13,8 +13,8 @@ describe("RootLayout", () => {
 
     expect(screen.getByRole("banner")).toBeInTheDocument();
     expect(screen.getByText("Library of Civilisation")).toBeInTheDocument();
-    expect(screen.getByText("Archive")).toBeInTheDocument();
-    expect(screen.getByText("Texts")).toBeInTheDocument();
+    expect(screen.getByText("Rooms")).toBeInTheDocument();
+    expect(screen.getByText("Principles")).toBeInTheDocument();
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
   });
 });
