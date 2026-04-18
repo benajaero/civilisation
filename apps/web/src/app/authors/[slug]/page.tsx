@@ -1,12 +1,15 @@
+import { Metadata } from "next";
 import { loadAuthor } from "@civilisation/content";
-
-const PageFrame = ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-auto w-full max-w-[72rem] px-[var(--layout-gutter)]">{children}</div>
-);
+import { SiteFrame } from "../../../components/site-frame";
 
 export async function generateStaticParams() {
   return [{ slug: "homer" }];
 }
+
+export const metadata: Metadata = {
+  title: "Author",
+  description: "Author details in the Library of Civilisation.",
+};
 
 export default async function AuthorPage({
   params,
@@ -18,26 +21,24 @@ export default async function AuthorPage({
 
   return (
     <main>
-      <PageFrame>
-        <article className="py-12">
-          <header className="mb-8">
-            <p className="font-[var(--font-meta)] uppercase tracking-[0.08em] text-[0.8rem] text-[var(--color-muted-ink)] mb-2">
+      <SiteFrame>
+        <article className="author">
+          <header className="author__header">
+            <p className="author__kicker cv-meta">
               {author.countries.join(", ")} · {author.civilisations.join(", ")}
             </p>
-            <h1 className="text-[clamp(2rem,4vw,3.5rem)] leading-[1.1]">{author.name}</h1>
+            <h1 className="author__name">{author.name}</h1>
             {author.dates?.floruit && (
-              <p className="mt-4 text-[var(--color-muted-ink)]">
-                Floruit: {author.dates.floruit}
-              </p>
+              <p className="author__dates">Floruit: {author.dates.floruit}</p>
             )}
           </header>
-          
-          <section className="border-t border-[var(--color-line)] pt-8 mt-8">
-            <h2 className="text-lg font-medium mb-4">Languages</h2>
-            <p>{author.languages.join(", ")}</p>
+
+          <section className="author__section">
+            <h2 className="author__section-title">Languages</h2>
+            <p className="author__detail">{author.languages.join(", ")}</p>
           </section>
         </article>
-      </PageFrame>
+      </SiteFrame>
     </main>
   );
 }

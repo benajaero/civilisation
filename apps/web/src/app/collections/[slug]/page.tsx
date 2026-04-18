@@ -1,12 +1,15 @@
+import { Metadata } from "next";
 import { loadCollection } from "@civilisation/content";
-
-const PageFrame = ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-auto w-full max-w-[72rem] px-[var(--layout-gutter)]">{children}</div>
-);
+import { SiteFrame } from "../../../components/site-frame";
 
 export async function generateStaticParams() {
   return [{ slug: "greek-epics" }];
 }
+
+export const metadata: Metadata = {
+  title: "Collection",
+  description: "Collection details in the Library of Civilisation.",
+};
 
 export default async function CollectionPage({
   params,
@@ -18,19 +21,19 @@ export default async function CollectionPage({
 
   return (
     <main>
-      <PageFrame>
-        <article className="py-12">
-          <header className="mb-8">
-            <p className="font-[var(--font-meta)] uppercase tracking-[0.08em] text-[0.8rem] text-[var(--color-muted-ink)] mb-2">
+      <SiteFrame>
+        <article className="collection">
+          <header className="collection__header">
+            <p className="collection__kicker cv-meta">
               {collection.countries.join(", ")} · {collection.civilisations.join(", ")}
             </p>
-            <h1 className="text-[clamp(2rem,4vw,3.5rem)] leading-[1.1]">{collection.title}</h1>
+            <h1 className="collection__title">{collection.title}</h1>
             {collection.description && (
-              <p className="mt-4 text-[var(--color-muted-ink)]">{collection.description}</p>
+              <p className="collection__description">{collection.description}</p>
             )}
           </header>
         </article>
-      </PageFrame>
+      </SiteFrame>
     </main>
   );
 }

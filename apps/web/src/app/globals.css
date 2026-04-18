@@ -245,6 +245,107 @@ code {
   text-decoration-color: var(--color-ink);
 }
 
+/* ========== Author ========== */
+
+.author {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.author__header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 1.5rem;
+}
+
+.author__kicker {
+  margin-bottom: 0.5rem;
+}
+
+.author__name {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.author__dates {
+  margin-top: 1rem;
+  color: var(--color-muted-ink);
+  font-style: italic;
+}
+
+.author__section {
+  margin-bottom: 1.5rem;
+}
+
+.author__section-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.author__detail {
+  color: var(--color-ink);
+}
+
+/* ========== Collection ========== */
+
+.collection {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.collection__header {
+  margin-bottom: 2rem;
+}
+
+.collection__kicker {
+  margin-bottom: 0.5rem;
+}
+
+.collection__title {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.collection__description {
+  margin-top: 1rem;
+  color: var(--color-muted-ink);
+  font-style: italic;
+  max-width: 42rem;
+}
+
+/* ========== Images ========== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.figure {
+  margin: 1.5rem 0;
+}
+
+.figure__image {
+  width: 100%;
+}
+
+.figure__caption {
+  font-size: 0.9rem;
+  color: var(--color-muted-ink);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
 .site-nav {
   padding: 0.9rem 0 1.1rem;
 }
