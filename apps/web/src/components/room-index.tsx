@@ -14,7 +14,7 @@ export function RoomIndex({ room, availableSlugs }: RoomIndexProps) {
           <>
             <em>{entry.title}</em>
             {entry.native ? (
-              <span className="entry__native" lang="auto">
+              <span className="entry__native">
                 {" "}&nbsp;·&nbsp; {entry.native}
               </span>
             ) : null}

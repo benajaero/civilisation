@@ -2,8 +2,8 @@
   "name": "@civilisation/web",
   "private": true,
   "scripts": {
-    "dev": "LIBRARY_PATH=/Users/ebenezerajaero/Code/civilisation/.worktrees/library-rooms-and-reader/library next dev",
-    "build": "LIBRARY_PATH=/Users/ebenezerajaero/Code/civilisation/.worktrees/library-rooms-and-reader/library next build",
+    "dev": "LIBRARY_PATH=../../library next dev",
+    "build": "LIBRARY_PATH=../../library next build",
     "typecheck": "tsc --noEmit",
     "vitest": "vitest run"
   },
