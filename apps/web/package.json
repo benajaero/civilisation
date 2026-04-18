@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "LIBRARY_PATH=${PWD}/library next build",
+    "build": "LIBRARY_PATH=/Users/ebenezerajaero/Code/civilisation/library next build",
     "typecheck": "tsc --noEmit",
     "vitest": "vitest run"
   },

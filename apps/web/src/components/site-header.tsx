@@ -17,9 +17,12 @@ export function SiteHeader() {
         </div>
         <hr className="cv-rule" />
         <div className="site-masthead__wordmark">
-          <span className="cv-meta">The</span>
-          <p className="site-masthead__title">Library of Civilisation</p>
-          <span className="cv-meta">An archive in public trust</span>
+          <img src="/logo.jpg" alt="Ninth Heaven Library" className="site-logo" />
+          <div className="site-masthead__title-wrap">
+            <span className="cv-meta">The</span>
+            <p className="site-masthead__title">Library of Civilisation</p>
+            <span className="cv-meta">An archive in public trust</span>
+          </div>
         </div>
         <hr className="cv-rule-double" />
         <nav className="site-nav" aria-label="Primary">
