@@ -1,5 +1,8 @@
 import { loadCollection } from "@civilisation/content";
-import { SiteFrame } from "../../../components/site-frame";
+
+const PageFrame = ({ children }: { children: React.ReactNode }) => (
+  <div className="mx-auto w-full max-w-[72rem] px-[var(--layout-gutter)]">{children}</div>
+);
 
 export async function generateStaticParams() {
   return [{ slug: "greek-epics" }];
@@ -15,7 +18,7 @@ export default async function CollectionPage({
 
   return (
     <main>
-      <SiteFrame>
+      <PageFrame>
         <article className="py-12">
           <header className="mb-8">
             <p className="font-[var(--font-meta)] uppercase tracking-[0.08em] text-[0.8rem] text-[var(--color-muted-ink)] mb-2">
@@ -27,7 +30,7 @@ export default async function CollectionPage({
             )}
           </header>
         </article>
-      </SiteFrame>
+      </PageFrame>
     </main>
   );
 }

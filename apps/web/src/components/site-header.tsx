@@ -27,6 +27,8 @@ export function SiteHeader() {
         <hr className="cv-rule-double" />
         <nav className="site-nav" aria-label="Primary">
           <ul className="site-nav__list">
+            <li><a href="/catalog">Catalog</a></li>
+            <li><a href="/search">Search</a></li>
             <li><a href="#index">Archive</a></li>
             <li><a href="#index">Texts</a></li>
             <li><a href="#epochs">Epochs</a></li>
