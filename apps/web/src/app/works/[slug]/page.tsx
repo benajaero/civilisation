@@ -1,8 +1,10 @@
-import { loadWork } from "@civilisation/content";
+import { loadWork, loadChapters, workHasText } from "@civilisation/content";
 
 const PageFrame = ({ children }: { children: React.ReactNode }) => (
   <div className="mx-auto w-full max-w-[72rem] px-[var(--layout-gutter)]">{children}</div>
 );
+
+export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   return [{ slug: "the-iliad" }];
@@ -15,6 +17,9 @@ export default async function WorkPage({
 }) {
   const { slug } = await params;
   const work = await loadWork(slug);
+  const hasText = await workHasText(slug);
+  const chapters = hasText ? await loadChapters(slug) : [];
+  const firstChapter = chapters[0];
 
   return (
     <main>
@@ -29,7 +34,35 @@ export default async function WorkPage({
               Available in: {work.available_languages.join(", ")}
             </p>
           </header>
-          
+
+          {hasText && firstChapter ? (
+            <section className="border-t border-[var(--color-line)] pt-8 mt-8">
+              <a
+                href={`/works/${slug}/text/${firstChapter.chapterSlug}`}
+                className="inline-block font-[var(--font-meta)] text-[0.78rem] uppercase tracking-[0.18em] border-b border-[var(--color-ink)] pb-1"
+              >
+                Begin reading &rarr;
+              </a>
+              <h2 className="text-lg font-medium mt-8 mb-4">Text</h2>
+              <ol className="space-y-2 list-decimal pl-6">
+                {chapters.map((ch) => (
+                  <li key={ch.chapterSlug}>
+                    <a
+                      href={`/works/${slug}/text/${ch.chapterSlug}`}
+                      className="text-[var(--color-accent)]"
+                    >
+                      {ch.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ) : (
+            <p className="mt-8 italic text-[var(--color-muted-ink)]">
+              Text not yet accessioned.
+            </p>
+          )}
+
           <section className="border-t border-[var(--color-line)] pt-8 mt-8">
             <h2 className="text-lg font-medium mb-4">Related Works</h2>
             <ul className="space-y-2">
@@ -42,7 +75,7 @@ export default async function WorkPage({
               ))}
             </ul>
           </section>
-          
+
           <section className="border-t border-[var(--color-line)] pt-8 mt-8">
             <h2 className="text-lg font-medium mb-4">Collections</h2>
             <ul className="space-y-2">
