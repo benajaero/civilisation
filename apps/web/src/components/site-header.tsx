@@ -17,15 +17,19 @@ export function SiteHeader() {
         </div>
         <hr className="cv-rule" />
         <div className="site-masthead__wordmark">
-          <img
-            src="/logo.jpg"
-            alt="Ninth Heaven Literature & Arts Association"
-            className="site-logo"
-          />
+          <a href="/" className="site-logo-link">
+            <img
+              src="/logo.jpg"
+              alt="Ninth Heaven Literature & Arts Association"
+              className="site-logo"
+            />
+          </a>
           <div className="site-masthead__title-wrap">
-            <span className="cv-meta">Ninth Heaven Literature & Arts Association</span>
-            <p className="site-masthead__title">Library of Civilisation</p>
-            <span className="cv-meta">NHLAA archive in public trust</span>
+            <a href="/" className="site-masthead__title-link">
+              <span className="cv-meta">Ninth Heaven Literature & Arts Association</span>
+              <p className="site-masthead__title">Library of Civilisation</p>
+              <span className="cv-meta">NHLAA archive in public trust</span>
+            </a>
           </div>
         </div>
         <hr className="cv-rule-double" />
