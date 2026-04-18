@@ -10,7 +10,7 @@ export {
   type ChapterSummary,
   type ChapterFrontmatter,
 } from "./load-chapters";
-export { buildCatalog } from "./build-catalog";
+export { buildCatalog, type CatalogEntry } from "./build-catalog";
 export { buildSearchIndex } from "./build-search-index";
 export { resolveLinks } from "./resolve-links";
 export {
